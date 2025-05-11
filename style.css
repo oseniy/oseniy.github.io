@@ -1,0 +1,345 @@
+
+/* шрифты */
+@font-face {
+    font-family: 'MyFont';
+    src: url('./assets/fonts/ofont.ru_Itim.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'MyFont', sans-serif;
+    text-align: center;
+    cursor: default;
+}
+
+.font-header {
+    font-size: clamp(2.5rem, 8vmin, 5rem);
+    font-weight: bold;
+}
+
+.font-pale {
+    cursor: default;
+    font-size: clamp(1rem, 3vmin, 1.8rem);
+    color: rgb(150, 150, 150)
+}
+
+.font-main {
+    cursor: default;
+    font-size: clamp(1.5rem, 5vmin, 3rem);
+}
+/* шрифты */
+
+
+/* задний фон */
+.app-wrapper {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.background {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: -1;
+    background-image: url("./assets/imgs/background.jpg");
+    background-size: cover;
+    opacity: 0.1;
+}
+/* задний фон */
+
+
+/* отображение экранов */
+.screen {
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+.active {
+    display: flex !important;
+}
+
+/* анимация */
+@keyframes slideOutLeft {
+    0% {
+        transform: translateX(0);
+    }
+    20% {
+        transform: translateX(10%) skewX(10deg);
+    }
+    100% {
+        transform: translateX(-100%) skewX(-30deg);
+    }
+}
+
+@keyframes slideInRight {
+    0% {
+        transform: translateX(100%) skewX(-60deg);
+    }
+    60% {
+        transform: skewX(0deg);
+    }
+    100% {
+        transform: translateX(0) skewX(0deg);
+    }
+}
+
+.slide-out {
+    animation: slideOutLeft 0.5s cubic-bezier(0.2, 0.8, 0.3, 1.2) forwards;
+}
+
+.slide-in {
+    animation: slideInRight 0.5s cubic-bezier(0.2, 0.8, 0.3, 1.2) forwards;
+}
+/* анимация */
+
+/* items */
+.btn {
+    margin: clamp(0.5rem, 2vmin, 1.25rem);
+    transition: transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn:hover {
+    cursor: pointer;
+    transform: scale(0.95);
+}
+
+.text-item {
+    margin: clamp(0.5rem, 2vmin, 1.25rem); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* items */
+
+/* mainScreen */
+.main {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;  
+}
+
+h1 {
+    margin: clamp(4rem, 12vmin, 7.5rem);
+}
+/* mainScreen */
+
+/* levelScreen */
+.level {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;  
+    padding: 0 15vw;
+}
+.control-bar, .status-bar {
+    display: flex;
+    width: 100%;
+}
+
+.control-bar > * {
+    flex: 1;
+    text-align: center;
+}
+
+.status-bar > * {
+    flex: 1;
+    text-align: center; 
+}
+
+.level-btn {
+    display: none;
+    z-index: 2;
+}
+
+.cards {
+    width: 100%;
+    display: grid;
+    gap: 2vmin;
+    justify-content: center;
+    transition: opacity 0.5s ease;
+}
+
+.cards-transparent {
+    opacity: 0.5;
+}
+
+.card {
+    aspect-ratio: 4 / 5;
+    width: 100%;
+    max-width: 20vmin;
+    perspective: 1000px;
+    border-radius: 5%;
+    cursor: pointer;
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    position: relative;
+}
+
+.card.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 1vmin;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    background: #999999;
+    border: 0.15rem solid #5A5A5A;
+    box-sizing: border-box;
+}
+
+.card-back {
+    transform: rotateY(180deg);
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-size: contain;
+}
+
+.text-lvl-ended {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: -1;
+}
+
+.text-lvl-ended-active {
+    opacity: 1;
+    z-index: 0;
+}
+/* levelScreen */
+
+/* отображение экранов */
+
+
+/* медиа-запросы */
+@media (orientation: portrait) {
+    .font-header {
+        font-size: clamp(3.75rem, 12vmin, 3.75rem);
+    }
+    .font-pale {
+        font-size: clamp(1.35rem, 4.5vmin, 1.5rem);
+    }
+    .font-main {
+        font-size: clamp(2.25rem, 7.5vmin, 2.25rem);
+    }
+    h1 {
+        margin: clamp(5.63rem, 18vmin, 6rem);
+    }
+    .menu-item {
+        margin: clamp(0.75rem, 3vmin, 0.94rem);
+    }
+}
+
+/* анимация */
+@media (max-aspect-ratio: 3/2) {
+    @keyframes slideOutLeft {
+        0% {
+            transform: translateX(0);
+        }
+        20% {
+            transform: translateX(10%) skewX(10deg);
+        }
+        100% {
+            transform: translateX(-200%) skewX(-30deg);
+        }
+    }
+}
+/* анимация */
+
+/* карточки */
+@media (min-aspect-ratio: 1.2) {
+    .cards.layout-12 {
+    grid-template-columns: repeat(6, 1fr);
+    }
+}
+
+@media (max-aspect-ratio: 1.2) and (min-aspect-ratio: 0.7) {
+    .cards.layout-12 {
+    grid-template-columns: repeat(4, 1fr); 
+    }
+}
+
+@media (max-aspect-ratio: 0.7) {
+    .cards.layout-12 {
+    grid-template-columns: repeat(3, 1fr); 
+    }
+}
+
+
+@media (min-aspect-ratio: 1) {
+    .cards.layout-18 {
+    grid-template-columns: repeat(6, 1fr); 
+    }
+}
+
+@media (max-aspect-ratio: 1) and (min-aspect-ratio: 0.6) {
+    .cards.layout-18 {
+    max-width: 80%;
+    grid-template-columns: repeat(4, 1fr); 
+    }
+    
+    .cards.layout-18 .card:nth-child(17) {
+        grid-column: 2;
+    }
+    
+    .cards.layout-18 .card:nth-child(18) {
+        grid-column: 3;
+    }
+    
+}
+
+@media (max-aspect-ratio: 0.6) {
+    .cards.layout-18 {
+    max-width: 80%;
+    grid-template-columns: repeat(3, 1fr); 
+    }
+}
+
+
+@media (min-aspect-ratio: 1.1) {
+    .cards.layout-24 {
+    grid-template-columns: repeat(8, 1fr);
+    }
+}
+
+@media (max-aspect-ratio: 1.1) and (min-aspect-ratio: 0.6) {
+    .cards.layout-24 {
+    grid-template-columns: repeat(6, 1fr); 
+    }
+}
+
+@media (max-aspect-ratio: 0.6) {
+    .cards.layout-24 {
+    grid-template-columns: repeat(4, 1fr); 
+    }
+}
+/* карточки */
+
+
+/* control-bar */
+@media (max-width: 550px) {
+    .control-bar {
+        flex-direction: column;
+    }
+}
+/* control-bar */
+
+/* медиа-запросы */

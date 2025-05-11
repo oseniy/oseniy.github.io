@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ёжки-мышки</title>
+    <link rel="icon" href="./assets/imgs/1.png">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background"></div>
+    <div class="app-wrapper">
+        <div class="screen main active" id="mainJS">
+            <h1 class="font-header">Ёжки-мышки</h1>
+            <p class="font-pale">Выберите уровень</p>
+            <p class="btn font-main" onclick="startLevel('levelEasyJS')">Легкий</p>
+            <p class="btn font-main" onclick="startLevel('levelNormalJS')">Средний</p>
+            <p class="btn font-main" onclick="startLevel('levelHardJS')">Сложный</p>
+        </div>
+        <div class="screen level" id="levelEasyJS">
+            <div class="status-bar">
+                <p class="text-item font-main moves-counter"></p>
+                <p class="text-item font-main difficulty">Лёгкий</p>
+            </div>
+            <div class="cards layout-12"></div>
+            <div class="control-bar">
+                <p class="btn font-main" onclick="switchScreen('mainJS')">Назад</p>
+                <div class="level-btn-container">
+                    <p class="btn level-btn font-main next-level-btn" onclick="startLevel('levelNormalJS')">Следующий уровень</p>
+                    <p class="btn level-btn font-main try-again-btn" onclick="startLevel('levelEasyJS')">Попробовать ещё раз</p>
+                </div>
+            </div>
+            <p class="font-header text-lvl-ended text-victory">Победа!</p>
+            <p class="font-header text-lvl-ended text-defeat">Поражение(</p>
+        </div>
+        <div class="screen level" id="levelNormalJS">
+            <div class="status-bar">
+                <p class="text-item font-main moves-counter"></p>
+                <p class="text-item font-main difficulty">Средний</p>
+            </div>
+            <div class="cards layout-18"></div>
+            <div class="control-bar">
+                <p class="btn font-main" onclick="switchScreen('mainJS')">Назад</p>
+                <div class="level-btn-container">
+                    <p class="btn level-btn font-main next-level-btn" onclick="startLevel('levelHardJS')">Следующий уровень</p>
+                    <p class="btn level-btn font-main try-again-btn" onclick="startLevel('levelNormalJS')">Попробовать ещё раз</p>
+                </div>
+            </div>
+            <p class="font-header text-lvl-ended text-victory">Победа!</p>
+            <p class="font-header text-lvl-ended text-defeat">Поражение(</p>
+        </div>
+        <div class="screen level" id="levelHardJS">
+            <div class="status-bar">
+                <p class="text-item font-main moves-counter"></p>
+                <p class="text-item font-main difficulty">Сложный</p>
+            </div>
+            <div class="cards layout-24"></div>
+            <div class="control-bar">
+                <p class="btn font-main" onclick="switchScreen('mainJS')">Назад</p>
+                <div class="level-btn-container">
+                    <p class="btn level-btn font-main try-again-btn" onclick="startLevel('levelHardJS')">Попробовать ещё раз</p>
+                </div>
+            </div>
+            <p class="font-header text-lvl-ended text-victory">Победа!</p>
+            <p class="font-header text-lvl-ended text-defeat">Поражение(</p>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
